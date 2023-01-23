@@ -11,6 +11,7 @@ const startGameBtn = document.querySelector('#startGameBtn');
 const bigScoreEl = document.querySelector('#bigScoreEl');
 const highScoreEl = document.querySelector('#highScoreEl');
 let highScore = localStorage.getItem('dot-invaders:highScore') || 0;
+highScoreEl.innerHTML = highScore;
 
 class Player {
     constructor(x, y, radius, color) {

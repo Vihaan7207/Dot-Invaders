@@ -9,6 +9,8 @@ const scoreEl = document.querySelector('#scoreEl');
 const modalEl = document.querySelector('#modalEl');
 const startGameBtn = document.querySelector('#startGameBtn');
 const bigScoreEl = document.querySelector('#bigScoreEl');
+const highScoreEl = document.querySelector('#highScoreEl');
+let highScore = localStorage.getItem('dot-invaders:highScore') || 0;
 
 class Player {
     constructor(x, y, radius, color) {
@@ -118,6 +120,7 @@ const init = () => {
     score = 0;
     scoreEl.innerHTML = score;
     bigScoreEl.innerHTML = score;
+    highScoreEl.innerHTML = highScore;
 }
 
 const spawnEnemies = () => {
@@ -176,6 +179,10 @@ const animate = () => {
             cancelAnimationFrame(animationId);
             modalEl.style.display = "flex";
             bigScoreEl.innerHTML = score;
+            if(score > highScore) {
+                highScore = score;
+            }
+            highScoreEl.innerHTML = highScore;
         }
 
         projectiles.forEach((projectile, projIndex) => {

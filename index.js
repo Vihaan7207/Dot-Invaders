@@ -183,6 +183,7 @@ const animate = () => {
             if(score > highScore) {
                 highScore = score;
             }
+            localStorage.setItem('dot-invaders:highScore', highScore);
             highScoreEl.innerHTML = highScore;
         }
 
